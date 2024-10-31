@@ -20,7 +20,9 @@ export default async function Layout({
         <Sidebar>
           <SidebarHeader />
           <SidebarContent>
-            <SidebarGroup />
+            <SidebarGroup>Connections</SidebarGroup>
+            <SidebarGroup>Connections</SidebarGroup>
+            <SidebarGroup>Connections</SidebarGroup>
             <SidebarGroup />
           </SidebarContent>
           <SidebarFooter />
