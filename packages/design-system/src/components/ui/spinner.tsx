@@ -1,5 +1,5 @@
-import { cn } from "../utils";
-import "./styles/spinner.css";
+import { cn } from "../../utils";
+import "./../styles/spinner.css";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export interface Props {
