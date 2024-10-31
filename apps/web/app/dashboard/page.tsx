@@ -1,18 +1,9 @@
-import { Paths } from "@/constants/routes";
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+"use client";
+import React from "react";
 
-export default async function ProtectedPage() {
-  const supabase = await createClient();
+import { getAllFolders } from "@/utils/stackAi/folder";
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return redirect(Paths.LOGIN);
-  }
-
+export default function ProtectedPage() {
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
       <div className="w-full">
@@ -23,9 +14,7 @@ export default async function ProtectedPage() {
       </div>
       <div className="flex flex-col gap-2 items-start">
         <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          {JSON.stringify(user, null, 2)}
-        </pre>
+        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto"></pre>
       </div>
       <div>
         <h2 className="font-bold text-2xl mb-4">Next steps</h2>

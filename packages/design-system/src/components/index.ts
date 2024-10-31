@@ -5,3 +5,8 @@ export * from "./ui/dropdownMenu";
 export * from "./ui/input";
 export * from "./ui/label";
 export * from "./ui/card";
+export * from "./ui/sidebar";
+export * from "./ui/sheet";
+export * from "./ui/skeleton";
+export * from "./ui/tooltip";
+export * from "./ui/separator";

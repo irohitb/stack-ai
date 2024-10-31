@@ -1,4 +1,4 @@
-import { signInAction } from "@/utils/api/auth";
+import { signInAction } from "@/utils/supabase/auth";
 import {
   Card,
   CardContent,

@@ -7,16 +7,16 @@ export interface Props {
   color: string;
 }
 
-const buttonVariants = cva(
-  "border-2  border-b-transparent rounded-full inline-block box-borde",
+const spinnerVariants = cva(
+  "border-2 border-solid  border-b-transparent rounded-full inline-block box-borde",
   {
     variants: {
       variant: {
         default: "border-primary",
-        secondary: "border-secondary",
+        secondary: "border-secondary-foreground",
       },
       size: {
-        default: "w-6 h-6 border-2 ",
+        default: "w-6 h-6 border-2",
         sm: "w-4 h-4 border-1",
         lg: "w-8 h-8 border-3",
       },
@@ -28,14 +28,14 @@ const buttonVariants = cva(
   }
 );
 
-export interface SpinnerProps extends VariantProps<typeof buttonVariants> {
+export interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
   className?: string;
 }
 
 export const Spinner = ({ size, variant, className }: SpinnerProps) => {
   return (
     <span
-      className={cn("loader", buttonVariants({ variant, size, className }))}
+      className={cn("loader", spinnerVariants({ variant, size, className }))}
     ></span>
   );
 };

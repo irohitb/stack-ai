@@ -19,7 +19,9 @@
 
   "exclude": ["node_modules", "build", "dist", "example"],
   "include": ["src/**/*.ts", "src/**/*.tsx", "index.ts"],
-
+  "paths": {
+    "src": ["src/*"]
+  },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

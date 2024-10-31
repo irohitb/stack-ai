@@ -1,3 +1,13 @@
+import {
+  Card,
+  SidebarProvider,
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarGroup,
+  SidebarFooter,
+} from "@stackai/ui";
+
 export default async function Layout({
   children,
 }: {
@@ -5,6 +15,18 @@ export default async function Layout({
 }) {
   console.log("DASHBOARD");
   return (
-    <div className="max-w-7xl flex flex-col gap-12 items-start">{children}</div>
+    <div className="max-w-7xl flex flex-col gap-12 items-start">
+      <SidebarProvider>
+        <Sidebar>
+          <SidebarHeader />
+          <SidebarContent>
+            <SidebarGroup />
+            <SidebarGroup />
+          </SidebarContent>
+          <SidebarFooter />
+        </Sidebar>
+        {children}
+      </SidebarProvider>
+    </div>
   );
 }
