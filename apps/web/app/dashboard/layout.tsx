@@ -1,12 +1,7 @@
-import {
-  Card,
-  SidebarProvider,
-  Sidebar,
-  SidebarHeader,
-  SidebarContent,
-  SidebarGroup,
-  SidebarFooter,
-} from "@stackai/ui";
+import { Paths } from "@/constants/routes";
+import { SidebarProvider } from "@stackai/ui";
+import { Settings } from "lucide-react";
+import LeftSidebar from "./Sidebar";
 
 export default async function Layout({
   children,
@@ -17,16 +12,7 @@ export default async function Layout({
   return (
     <div className="max-w-7xl flex flex-col gap-12 items-start">
       <SidebarProvider>
-        <Sidebar>
-          <SidebarHeader />
-          <SidebarContent>
-            <SidebarGroup>Connections</SidebarGroup>
-            <SidebarGroup>Connections</SidebarGroup>
-            <SidebarGroup>Connections</SidebarGroup>
-            <SidebarGroup />
-          </SidebarContent>
-          <SidebarFooter />
-        </Sidebar>
+        <LeftSidebar />
         {children}
       </SidebarProvider>
     </div>

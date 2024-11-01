@@ -3,16 +3,22 @@ import React from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "react-query";
-import { Skeleton } from "@stackai/ui";
 import stackAIApi from "@/utils/stackAi/api";
-import { getAllFolders } from "@/utils/stackAi/folder";
 import { Spinner } from "@stackai/ui/src/components/ui/spinner";
+import { User } from "@supabase/supabase-js";
 
-export default function SupabaseAuthWrapper({
+type SupabaseContext = {
+  user?: User;
+};
+
+const Context = React.createContext<SupabaseContext | undefined>(undefined);
+
+export default function SupabaseAuthProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [user, setUser] = React.useState<User>();
   const [isAppLoaded, setIsAppLoaded] = React.useState(false);
   const queryClient = useQueryClient();
   const supabase = createClient();
@@ -28,10 +34,12 @@ export default function SupabaseAuthWrapper({
         stackAIApi.defaults.headers.common["Authorization"] = "";
       }
       if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
+        const user = session?.user;
         stackAIApi.defaults.headers.common["Authorization"] =
           `Bearer ${session?.access_token}`;
       }
       if (!isAppLoaded) {
+        setUser(session?.user);
         setIsAppLoaded(true);
       }
     });
@@ -41,7 +49,7 @@ export default function SupabaseAuthWrapper({
   }, [router, supabase]);
 
   return (
-    <>
+    <Context.Provider value={{ user }}>
       {isAppLoaded ? (
         <>{children} </>
       ) : (
@@ -49,6 +57,16 @@ export default function SupabaseAuthWrapper({
           <Spinner size="lg" variant="secondary" />
         </div>
       )}
-    </>
+    </Context.Provider>
   );
 }
+
+export const useSupabaseUser = () => {
+  const context = React.useContext(Context);
+
+  if (context === undefined) {
+    throw new Error("useSupabaseUser must be used inside SupabaseProvider");
+  }
+
+  return context;
+};
