@@ -26,11 +26,6 @@ import { signOutAction } from "@/utils/supabase/auth";
 
 const items = [
   {
-    title: "Connections",
-    url: Paths.DASHBOARD,
-    icon: ArrowRightLeft,
-  },
-  {
     title: "Knowledge Bases",
     url: Paths.KNOWLEDGE_BASES,
     icon: Database,
