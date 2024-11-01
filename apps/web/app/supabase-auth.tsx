@@ -6,6 +6,7 @@ import { useQueryClient } from "react-query";
 import stackAIApi from "@/utils/stackAi/api";
 import { Spinner } from "@stackai/ui/src/components/ui/spinner";
 import { User } from "@supabase/supabase-js";
+import { SUPABASE_TOKEN } from "@/constants/local-storage";
 
 type SupabaseContext = {
   user?: User;
@@ -31,11 +32,14 @@ export default function SupabaseAuthProvider({
       if (event === "SIGNED_OUT") {
         queryClient.invalidateQueries();
         router.refresh();
-        stackAIApi.defaults.headers.common["Authorization"] = "";
+        stackAIApi.defaults.headers["Authorization"] = "";
+        localStorage.removeItem(SUPABASE_TOKEN);
       }
       if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        stackAIApi.defaults.headers.common["Authorization"] =
+        stackAIApi.defaults.headers["Authorization"] =
           `Bearer ${session?.access_token}`;
+
+        localStorage.setItem(SUPABASE_TOKEN, session?.access_token as string);
       }
 
       if (!isAppLoaded) {
