@@ -21,7 +21,7 @@ export function SubmitButton({
 
   return (
     <Button type="submit" aria-disabled={pending} {...props} disabled={loading}>
-      {pending ? <Spinner /> : children}
+      {pending ? <Spinner variant="default" /> : children}
     </Button>
   );
 }

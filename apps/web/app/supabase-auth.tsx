@@ -34,14 +34,14 @@ export default function SupabaseAuthProvider({
         stackAIApi.defaults.headers.common["Authorization"] = "";
       }
       if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        const user = session?.user;
         stackAIApi.defaults.headers.common["Authorization"] =
           `Bearer ${session?.access_token}`;
       }
+
       if (!isAppLoaded) {
-        setUser(session?.user);
         setIsAppLoaded(true);
       }
+      setUser(session?.user);
     });
     return () => {
       subscription.unsubscribe();

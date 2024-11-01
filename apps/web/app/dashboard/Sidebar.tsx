@@ -19,7 +19,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@stackai/ui";
-import { ChevronUp, Settings, User2 } from "lucide-react";
+import { ChevronUp, ArrowRightLeft, User2, Database } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useSupabaseUser } from "../supabase-auth";
 import { signOutAction } from "@/utils/supabase/auth";
@@ -28,7 +28,12 @@ const items = [
   {
     title: "Connections",
     url: Paths.DASHBOARD,
-    icon: Settings,
+    icon: ArrowRightLeft,
+  },
+  {
+    title: "Knowledge Bases",
+    url: Paths.KNOWLEDGE_BASES,
+    icon: Database,
   },
 ];
 
@@ -70,7 +75,10 @@ export default function LeftSidebar() {
                 side="top"
                 className="w-[--radix-popper-anchor-width]"
               >
-                <DropdownMenuItem onClick={signOutAction}>
+                <DropdownMenuItem
+                  onClick={signOutAction}
+                  className="cursor-pointer"
+                >
                   <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>

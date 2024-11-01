@@ -3,13 +3,12 @@ import { Plus } from "lucide-react";
 
 export default async function Connections() {
   return (
-    <PanelHeader heading="Connections">
-      {/* Disabled because we can't add new connextion from this app*/}
-      <PanelHeaderButton disabled={true}>
+    <PanelHeader heading="Knowledge Base">
+      <PanelHeaderButton>
         <PanelIcon>
           <Plus />
         </PanelIcon>
-        New Connection
+        New Knowldedge Base
       </PanelHeaderButton>
     </PanelHeader>
   );

@@ -8,11 +8,11 @@ export interface Props {
 }
 
 const spinnerVariants = cva(
-  "border-2 border-solid  border-b-transparent rounded-full inline-block box-borde",
+  "border-2 border-solid border-b-transparent rounded-full inline-block box-borde",
   {
     variants: {
       variant: {
-        default: "border-primary",
+        default: "border-primary-foreground",
         secondary: "border-secondary-foreground",
       },
       size: {
