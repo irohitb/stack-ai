@@ -75,7 +75,10 @@ export default function LeftSidebar() {
                 side="top"
                 className="w-[--radix-popper-anchor-width]"
               >
-                <DropdownMenuItem onClick={signOutAction}>
+                <DropdownMenuItem
+                  onClick={signOutAction}
+                  className="cursor-pointer"
+                >
                   <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
