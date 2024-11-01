@@ -1,6 +1,7 @@
 import { Paths } from "@/constants/routes";
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import stackAIApi from "../stackAi/api";
 
 export const updateSession = async (request: NextRequest) => {
   // Create an unmodified response
@@ -38,6 +39,7 @@ export const updateSession = async (request: NextRequest) => {
   // This will refresh session if expired - required for Server Components
   // https://supabase.com/docs/guides/auth/server-side/nextjs
   const user = await supabase.auth.getUser();
+
   const currentPath = request.nextUrl.pathname;
 
   const protectedRouteRedirect = protectedPaths.find((el) => {

@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import { Button } from "./../components/Button";
+import { Button } from "../components/ui/button";
 import { type ComponentProps } from "react";
-import { Spinner } from "./../components/Spinner";
+import { Spinner } from "../components/ui/spinner";
 //@ts-expect-error
 import { useFormStatus } from "react-dom";
 
